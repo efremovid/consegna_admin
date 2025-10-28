@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  justify-content: center;
+  inline-size: 100%;
+  padding: 10px;
+  background-color: #00427a;
+  font-size: 20px;
+
+  .title {
+    color: white;
+    text-align: center;
+  }
+
+  .logo {
+    inline-size: 40px;
+    color: white;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

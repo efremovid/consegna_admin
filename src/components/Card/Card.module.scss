@@ -1,0 +1,25 @@
+.container {
+  padding: 20px;
+  background: rgb(232, 232, 232);
+  inline-size: 100%;
+  block-size: 450px;
+  display: grid;
+  gap: 10px;
+  border-radius: 5px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.del {
+  inline-size: 30px;
+}

@@ -19,8 +19,20 @@ const Slider = ({ images }) => {
   return (
     <div className="slider">
       <button className="slider-button left" onClick={prevSlide}>
-        &#10094;
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
       </button>
+
       <div className="slider-content">
         <img
           src={images[currentIndex]}
@@ -28,8 +40,16 @@ const Slider = ({ images }) => {
           className="slider-image"
         />
       </div>
+
       <button className="slider-button right" onClick={nextSlide}>
-        &#10095;
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
       </button>
     </div>
   );

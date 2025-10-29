@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Form.module.scss";
 
-const Form = ({handleChange, addContainer, container}) => {
+const Form = ({ handleChange, addContainer, container }) => {
   return (
     <form onSubmit={addContainer} className={styles.container}>
       <input
@@ -11,6 +11,14 @@ const Form = ({handleChange, addContainer, container}) => {
         name="name"
         value={container.name}
         placeholder="Наименование продукта"
+      />
+      <input
+        onChange={handleChange}
+        className={styles.containerItem}
+        type="text"
+        name="location"
+        value={container.location}
+        placeholder="Локация"
       />
       <input
         onChange={handleChange}

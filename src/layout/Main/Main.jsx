@@ -1,15 +1,16 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Main.module.scss";
 import Form from "../../components/Form/Form";
 import Cards from "../../components/Cards/Cards";
 import axios from "axios";
-
+import Preloader from "../../components/Preloader/Preloader";
 
 const Main = () => {
   const [data, setData] = useState([]);
-    // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [container, setContainer] = useState({
     name: "",
+    location: "",
     price: "",
     images: "",
   });
@@ -32,12 +33,13 @@ const Main = () => {
     }
     setContainer({
       name: "",
+      location: "",
       price: "",
       images: "",
     });
   };
 
-    const deleteApp = async (id) => {
+  const deleteApp = async (id) => {
     try {
       await axios.delete(
         `https://6862c75696f0cc4e34baf165.mockapi.io/containers/${id}`
@@ -48,19 +50,29 @@ const Main = () => {
     }
   };
 
-    useEffect(() => {
-    // setIsLoading(true);
+  useEffect(() => {
+    setIsLoading(true);
     axios
       .get("https://6862c75696f0cc4e34baf165.mockapi.io/containers")
       .then((response) => setData(response.data))
       .catch((error) => console.error("Ошибка загрузки:", error))
-    //   .finally(() => setIsLoading(false));
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
     <div className={styles.container}>
-      <Form addContainer={addContainer} handleChange={handleChange} container={container}/>
-      <Cards data={data} deleteApp={deleteApp}/>
+      <Form
+        addContainer={addContainer}
+        handleChange={handleChange}
+        container={container}
+      />
+      {isLoading ? (
+        <Preloader />
+      ) : data.length === 0 ? (
+        <p className={styles.text}>В настоящее время ничего не продаётся</p>
+      ) : (
+        <Cards data={data} deleteApp={deleteApp} />
+      )}
     </div>
   );
 };
